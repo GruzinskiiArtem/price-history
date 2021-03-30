@@ -1,0 +1,21 @@
+<?php
+
+use Test\PriceHistory\Block\Product\PriceHistory as PriceHistoryBlock;
+use Test\PriceHistory\ViewModel\Product\PriceHistory as PriceHistoryViewModel;
+
+/**
+ * @var PriceHistoryViewModel $priceHistory
+ * @var PriceHistoryBlock $block
+ */
+$priceHistory = $block->getPriceHistoryModel();
+?>
+<?php if ($block->isShow()): ?>
+    <div id="chartContainer" data-mage-init='{
+        "Test_PriceHistory/js/product/price-history":
+            {
+                "dataPoints": <?= /* @noEscape */ $priceHistory->getDataPoints() ?>
+            }
+        }'>
+        <div class="canvasjs-chart-container"></div>
+    </div>
+<?php endif; ?>

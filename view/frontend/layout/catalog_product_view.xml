@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info.details">
+            <block name="product.info.price.history" group="detailed_info"
+                   class="Test\PriceHistory\Block\Product\PriceHistory"
+                   template="Test_PriceHistory::product/view/price_history.phtml">
+                <arguments>
+                    <argument name="price_history_model" xsi:type="object">Test\PriceHistory\ViewModel\Product\PriceHistory</argument>
+                    <argument name="title" translate="true" xsi:type="string">Price History</argument>
+                    <argument name="sort_order" xsi:type="string">40</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

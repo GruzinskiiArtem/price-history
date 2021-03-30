@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">price_history_listing.price_history_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>price_history_columns</spinner>
+        <deps>
+            <dep>price_history_listing.price_history_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="price_history_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="cacheRequests" xsi:type="boolean">false</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider class="Test\PriceHistory\Ui\DataProvider\Product\PriceHistoryDataProvider"
+                      name="price_history_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <columns name="price_history_columns" class="Magento\Ui\Component\Listing\Columns">
+        <column name="price" sortOrder="0">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Price</label>
+            </settings>
+        </column>
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date"
+                component="Magento_Ui/js/grid/columns/date" sortOrder="10">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Date</label>
+            </settings>
+        </column>
+    </columns>
+</listing>
